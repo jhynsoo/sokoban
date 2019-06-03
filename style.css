@@ -1,0 +1,110 @@
+body {
+  position: absolute;
+  background-color: rgb(20, 20, 20);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  width: 100%;
+  height: 100%;
+}
+#gameContainer {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+#mainMenu, #gameLoading, #nextLevel, #stageSelect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-size: 10vw;
+}
+#gameArea, #mainMenu, #gameLoading, #stageSelect, #nextLevel {
+  display: none;
+}
+#gameLevel {
+  display: inline-block;
+  width: 25%;
+  font-size: 5vw;
+  font-weight: bold;
+  letter-spacing: -0.1vw;
+  color: rgb(255, 225, 50);
+  margin-left: 10vw;
+  margin-top: 10vh;
+  top: 0;
+  left: 0;
+}
+#canvasWrapper {
+  text-align: center;
+  margin: 10vh auto;
+}
+#canvas {
+  /* background-color: black; */
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+  display: block;
+  margin: 5% auto;
+  width: 25%;
+  height: 15vw;
+  font-size: 5vw;
+  font-weight: bold;
+  letter-spacing: -0.1vw;
+  text-align: center;
+  border-radius: 3vw;
+  background: rgb(255, 225, 50);
+  color: rgb(10, 10, 10);
+}
+button:active {
+  transform: scale(0.95);
+}
+#stageSelectButtons {
+  margin-top: 40%;
+}
+.fiveStageSelectButtons {
+  display: block;
+}
+.fiveStageSelectButtons button {
+  display: inline-block;
+  background: rgb(255, 236, 128);
+  width: 10vw;
+  height: 10vw;
+  margin: 2% 1%;
+}
+#backToMenuButton {
+  display: inline-block;
+  margin-right: 10vw;
+}
+#backToTitleButton {
+  display: block;
+  position: absolute;
+  bottom: 30%;
+  left: 37%;
+}
+#gameTitle {
+  color: rgb(255, 225, 50);
+  margin: 10vh 0;
+  margin-bottom: 30vh;
+  font-size: 17vw;
+  letter-spacing: -0.5vw;
+}
+#footer {
+  position: absolute;
+  margin: 0 auto;
+  bottom: 0;
+  text-align: center;
+  font-size: 1vw;
+  color: rgb(128, 128, 128);
+  width: 100%;
+  left: 0;
+  margin-bottom: 3vh;
+}
+#gameVersion {
+  margin-bottom: 10px;
+}
