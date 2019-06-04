@@ -8,8 +8,13 @@ var ball2 = [[2, 2], [2, 3], [3, 3]];
 var goal2 = [[7, 3], [7, 4], [7, 5]];
 var player2 = [3, 2];
 
+var wall3 = [[1, 1], [1, 2], [1, 3], [1, 4], [1, 5], [1, 6], [1, 7], [2, 3], [2, 4], [2, 7], [3, 7], [4, 7], [5, 7], [6, 7], [6, 6], [6, 5], [6, 4], [6, 3], [5, 3], [5, 2], [5, 1], [5, 0], [4, 0], [3, 0], [2, 0], [2, 1]];
+var ball3 = [[4, 2], [3, 3], [4, 4], [3, 5], [4, 6]];
+var goal3 = [[2, 5], [2, 6], [3, 6], [4, 6], [5, 6]];
+var player3 = [3, 2];
 
-var wallsData = [wall1, wall2];
-var ballsData = [ball1, ball2];
-var goalsData = [goal1, goal2];
-var playerData = [player1, player2];
+
+var wallsData = [wall1, wall2, wall3];
+var ballsData = [ball1, ball2, ball3];
+var goalsData = [goal1, goal2, goal3];
+var playerData = [player1, player2, player3];

@@ -14,7 +14,7 @@ body {
   height: 100%;
   position: relative;
 }
-#mainMenu, #gameLoading, #nextLevel, #stageSelect {
+#mainMenu, #gameLoading, #nextLevel, #stageSelect, #gameFinished {
   position: absolute;
   top: 0;
   left: 0;
@@ -23,7 +23,7 @@ body {
   text-align: center;
   font-size: 10vw;
 }
-#gameArea, #mainMenu, #gameLoading, #stageSelect, #nextLevel {
+#gameArea, #mainMenu, #gameLoading, #stageSelect, #nextLevel, #gameFinished {
   display: none;
 }
 #gameLevel {
@@ -57,7 +57,7 @@ button {
   font-weight: bold;
   letter-spacing: -0.1vw;
   text-align: center;
-  border-radius: 3vw;
+  border-radius: 4vw;
   background: rgb(255, 225, 50);
   color: rgb(10, 10, 10);
 }
@@ -93,6 +93,28 @@ button:active {
   margin-bottom: 30vh;
   font-size: 17vw;
   letter-spacing: -0.5vw;
+}
+#completeStage, #finishedBox {
+  display: block;
+  width: 80%;
+  height: 60vw;
+  border: 1vw solid rgb(255, 225, 50);
+  border-radius: 5vw;
+  margin: 30vh auto;
+}
+#congratsText {
+  margin: 10vw auto 13vw;
+  font-size: 10vw;
+  letter-spacing: -0.3vw;
+  text-align: center;
+  color: rgb(225, 225, 225);
+}
+#finishedText {
+  margin: 5vw auto 13vw;
+  font-size: 6vw;
+  letter-spacing: -0.1vw;
+  text-align: center;
+  color: rgb(225, 225, 225);
 }
 #footer {
   position: absolute;

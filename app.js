@@ -9,20 +9,25 @@ const stageSelectButton = document.getElementById("stageSelectButton");
 const stageSelect = document.getElementById("stageSelect");
 const backToMenuButton = document.getElementById("backToMenuButton");
 const backToTitleButton = document.getElementById("backToTitleButton");
+const nextLevelButton = document.getElementById("nextLevelButton");
 const nextLevel = document.getElementById("nextLevel");
 const htmlLevel = document.getElementById("gameLevel");
 const htmlGameVersion = document.getElementById("gameVersion");
-const gameSize = document.body.clientWidth * 0.8;
+const goToStageButton = document.getElementsByClassName("goToStageButton");
+const gameFinished = document.getElementById("gameFinished");
+const gameFinishedButton = document.getElementById("gameFinishedButton");
+const gameSize = document.body.clientWidth * 0.72;
 const gameVersion = "dlatl_rkdnl"
 const fadeOutTime = 200;
 const fadeInTime = 600;
-const pixelSize = 48;
+const pixelSize = document.body.clientWidth * 0.08;
 const wallImage = new Image();
 const ballImage = new Image();
 const goalImage = new Image();
 const playerImage = new Image();
 var playing = false;
 var gameLevel = 0;
+var highestLevel = 0;
 wallImage.src = "images/wallImage.png";
 ballImage.src = "images/ballImage.png";
 goalImage.src = "images/goalImage.png";
@@ -31,6 +36,17 @@ playerImage.src = "images/playerImage.png";
 
 if (document) {
   htmlGameVersion.innerHTML = gameVersion;
+  goToStageButton.item(0).style.background = "rgb(255, 225, 50)";
+  for (var i = 0; i < goToStageButton.length; i++) {
+    goToStageButton.item(i).innerHTML = i + 1;
+    goToStageButton.item(i).addEventListener("click", function() {
+      if (this.innerHTML - 1 <= highestLevel) {
+        fadeOut(stageSelect, fadeOutTime);
+        gameLevel = this.innerHTML - 1;
+        startGame(gameSize);
+      }
+    });
+  }
   fadeIn(mainMenu, fadeInTime);
   startButton.addEventListener("click", function () {
     startGame(gameSize);
@@ -42,21 +58,32 @@ if (document) {
     // move to selected level
   });
   backToMenuButton.addEventListener("click", function () {
-    if (playing === true) playing = false;
-    fadeOut(gameArea, fadeOutTime);
-    fadeIn(mainMenu, fadeInTime);
+    if (playing === true) {
+      playing = false;
+      fadeOut(gameArea, fadeOutTime);
+      fadeIn(mainMenu, fadeInTime);
+    }
   });
   backToTitleButton.addEventListener("click", function () {
-    if (playing === true) playing = false;
+    if (playing == true) playing = false;
+    playing = false;
     fadeOut(stageSelect, fadeOutTime);
     fadeIn(mainMenu, fadeInTime);
   });
+  nextLevelButton.addEventListener("click", function () {
+    fadeOut(nextLevel, fadeOutTime);
+    startGame(gameSize);
+  })
+  gameFinishedButton.addEventListener("click", function() {
+    fadeOut(gameFinished, fadeOutTime);
+    fadeIn(mainMenu, fadeInTime);
+  })
 }
 
 
 function startGame(size) {
   fadeOut(mainMenu, fadeOutTime);
-  htmlLevel.innerHTML = "STAGE " + gameLevel + 1;
+  htmlLevel.innerHTML = "STAGE " + (gameLevel + 1);
   fadeIn(gameArea, fadeInTime, "block");
   canvas.width = size;
   canvas.height = size;
@@ -109,17 +136,20 @@ function solved(ballArray, goalArray) {
   return false;
 }
 function levelUp() {
-  if (++gameLevel === levels.length) {
-    // game finished
+  if (playing === false) return;
+  playing = false;
+  if (++gameLevel > highestLevel) highestLevel = gameLevel;
+  if (gameLevel === wallsData.length) {
+    fadeOut(gameArea, fadeOutTime);
+    gameLevel = 0;
+    fadeIn(gameFinished, fadeInTime, "block");
   }
-  fadeOut(gameArea, fadeOutTime);
-  htmlLevel.innerHTML = "STAGE " + gamelevel + 1;
-  fadeIn(nextLevel, fadeInTime);
-  // level up popup
-}
-function drawWall(x, y) {
-  context.beginPath();
-
+  else {
+    goToStageButton.item(gameLevel).style.background = "rgb(255, 225, 50)";
+    fadeOut(gameArea, fadeOutTime);
+    htmlLevel.innerHTML = "STAGE " + gameLevel + 1;
+    fadeIn(nextLevel, fadeInTime, "block");
+  }
 }
 
 
