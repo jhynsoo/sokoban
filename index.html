@@ -11,15 +11,6 @@
 
 <body>
   <div id="gameContainer">
-    <div id="gameArea">
-      <!-- <div id="gameLevel">STAGE 1</div> -->
-      <div id="gameLevel">STAGE 1</div>
-      <button id="backToMenuButton">MENU</button>
-      <div id="canvasWrapper">
-        <canvas id="canvas"></canvas>
-      </div>
-    </div>
-
     <div id="mainMenu">
       <div id="gameTitle">SOKOBAN</div>
       <button id="startButton">START</button>
@@ -31,6 +22,18 @@
           All rights reserved. <br>
         </div>
       </footer>
+    </div>
+
+    <div id="gameArea">
+      <nav id="gameNav">
+        <div id="gameLevel">STAGE 1</div>
+        <button id="backToMenuButton">MENU</button>
+      </nav>
+      <div id="canvasWrapper">
+        <canvas id="canvas"></canvas>
+      </div>
+      <button id="undoButton">UNDO</button>
+      <button id="resetStageButton">RESET</button>
     </div>
 
     <div id="gameLoading">
@@ -54,12 +57,12 @@
           <button class="goToStageButton"></button>
         </div>
         <div class="fiveStageSelectButtons">
-            <button class="goToStageButton"></button>
-            <button class="goToStageButton"></button>
-            <button class="goToStageButton"></button>
-            <button class="goToStageButton"></button>
-            <button class="goToStageButton"></button>
-          </div>
+          <button class="goToStageButton"></button>
+          <button class="goToStageButton"></button>
+          <button class="goToStageButton"></button>
+          <button class="goToStageButton"></button>
+          <button class="goToStageButton"></button>
+        </div>
       </div>
       <button id="backToTitleButton">BACK</button>
     </div>
