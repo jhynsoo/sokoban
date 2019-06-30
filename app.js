@@ -69,7 +69,8 @@ const canMove = function (wallArray, ballArray, playerArray, key) {
   movePlayer(playerArray, x, y);
 }
 const movePlayer = function (playerArray, x, y, ballMoveArray) {
-  if (5 <= previousMove.length) previousMove.shift();
+  // if (5 <= previousMove.length) previousMove.shift();
+  previousMove.shift();
   previousMove.push([playerArray[0], playerArray[1]]);
   if (arguments.length === 4) {
     previousMove[previousMove.length - 1].push(ballMoveArray);
@@ -166,7 +167,7 @@ const fadeOut = function (object, ms) {
   if (!object) return;
   if (object.style.display === "none") return;
   if (ms) {
-    var opacity = 1;
+    let opacity = 1;
     const timer = setInterval(function () {
       opacity -= 50 / ms;
       if (opacity <= 0) {
@@ -214,7 +215,6 @@ const htmlGameVersion = document.getElementById("gameVersion");
 const goToStageButton = document.getElementsByClassName("goToStageButton");
 const gameFinished = document.getElementById("gameFinished");
 const gameFinishedButton = document.getElementById("gameFinishedButton");
-const pixelSize = document.body.clientWidth * 0.078;
 const gameVersion = "dlatl_rkdnl"
 const fadeOutTime = 200;
 const fadeInTime = 600;
@@ -224,6 +224,7 @@ const goalImage = new Image;
 const playerImage = new Image;
 const previousMove = new Array;
 const currentStage = new Array;
+const pixelSize = document.body.clientWidth * 0.078;
 let playing = false;
 let gameLevel = 0;
 let highestLevel = 0;
