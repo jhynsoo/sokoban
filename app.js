@@ -69,8 +69,7 @@ const canMove = function (wallArray, ballArray, playerArray, key) {
   movePlayer(playerArray, x, y);
 }
 const movePlayer = function (playerArray, x, y, ballMoveArray) {
-  // if (5 <= previousMove.length) previousMove.shift();
-  previousMove.shift();
+  // if (5 <= previousMove.length) previousMove.shift(); // limit undo
   previousMove.push([playerArray[0], playerArray[1]]);
   if (arguments.length === 4) {
     previousMove[previousMove.length - 1].push(ballMoveArray);
@@ -127,6 +126,7 @@ const levelUp = function () {
     location.reload(true);
   }
   if (gameLevel + 1 === playerData.length) {
+    playing = true;
     fadeOut(gameArea, fadeOutTime);
     fadeIn(gameFinished, fadeInTime, "block");
   }
@@ -224,7 +224,7 @@ const goalImage = new Image;
 const playerImage = new Image;
 const previousMove = new Array;
 const currentStage = new Array;
-const pixelSize = document.body.clientWidth * 0.078;
+const pixelSize = document.body.clientWidth * 4 < document.body.clientHeight * 3 ? document.body.clientWidth * 0.078 : document.body.clientHeight * 0.065;
 let playing = false;
 let gameLevel = 0;
 let highestLevel = 0;
@@ -277,20 +277,26 @@ if (document) {
     }
   })
   backToTitleButton.addEventListener("click", function () {
-    if (playing == true) playing = false;
+    if (playing === true) playing = false;
     playing = false;
     fadeOut(stageSelect, fadeOutTime);
     fadeIn(mainMenu, fadeInTime);
   });
   nextLevelButton.addEventListener("click", function () {
-    fadeOut(nextLevel, fadeOutTime);
-    resetLevel(++gameLevel);
-    startGame();
+    if (playing === false) {
+      fadeOut(nextLevel, fadeOutTime);
+      resetLevel(++gameLevel);
+      startGame();
+      playing = true;
+    }
   })
   gameFinishedButton.addEventListener("click", function () {
-    fadeOut(gameFinished, fadeOutTime);
-    fadeIn(mainMenu, fadeInTime);
-    gameLevel = 0;
-    resetLevel();
+    if (playing === true) {
+      fadeOut(gameFinished, fadeOutTime);
+      fadeIn(mainMenu, fadeInTime);
+      gameLevel = 0;
+      resetLevel();
+      playing = false;
+    }
   })
 }

@@ -63,7 +63,7 @@ body {
     margin-bottom: 3vh;
   }
   #gameVersion {
-    margin-bottom: 10px;
+    margin-bottom: 1vh;
   }
   /* Game */
   #gameNav {
@@ -73,22 +73,29 @@ body {
   }
   #gameLevel {
     display: inline-block;
-    position: inherit;
-    width: 40%;
     font-size: 7vw;
     font-weight: bold;
     letter-spacing: -0.1vw;
     color: rgb(250, 225, 0);
     margin: 0 15% 0 0;
-    left: 0;
   }
   #backToMenuButton, #undoButton, #resetStageButton {
     display: inline-block;
-    width: 20%;
-    height: 12vw;
-    font-size: 4vw;
-    border-radius: 2vw;
+    width: 17vw;
+    height: 10vw;
+    font-size: 3.5vw;
+    border-radius: 2.3vw;
     background: rgb(250, 225, 0);
+  }
+  #backToMenuButton {
+    margin: 0 3% 0 15%;
+    margin-bottom: 0;
+  }
+  #undoButton {
+    margin: 0 15% 0 10%;
+  }
+  #resetStageButton {
+    margin: 0 10% 0 15%;
   }
   #canvasWrapper {
     text-align: center;
@@ -108,23 +115,10 @@ body {
     height: 10vw;
     margin: 2% 1%;
   }
-  #backToMenuButton {
-    display: inline-block;
-    position: inherit;
-    right: 0;
-    margin: 0 3% 0 15%;
-    margin-bottom: 0;
-  }
-  #undoButton {
-    margin: 0 15% 0 10%;
-  }
-  #resetStageButton {
-    margin: 0 10% 0 15%;
-  }
   #backToTitleButton {
     display: block;
   }
-  
+  /* Next Level */
   #completeStage, #finishedBox {
     display: block;
     width: 80%;
@@ -140,8 +134,9 @@ body {
     /* text-align: center; */
     color: rgb(225, 225, 225);
   }
+  /* Game Finished */
   #finishedText {
-    margin: 5vw auto 13vw;
+    margin: 5vw auto 10vw;
     font-size: 6vw;
     letter-spacing: -0.1vw;
     text-align: center;
@@ -149,5 +144,130 @@ body {
   }
 }
 @media (min-aspect-ratio: 3/4) {
-
+  #gameArea, #mainMenu, #gameLoading, #nextLevel, #stageSelect, #gameFinished {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 10vh;
+    display: none;
+  }
+  button {
+    all: unset;
+    cursor: pointer;
+    display: block;
+    margin: 3vh auto;
+    width: 17vh;
+    height: 10vh;
+    font-size: 3.5vh;
+    font-weight: bold;
+    letter-spacing: -0.1vh;
+    text-align: center;
+    border-radius: 2vh;
+    background: rgb(250, 225, 0);
+    color: rgb(10, 10, 10);
+  }
+  button:active {
+    transform: scale(0.95);
+  }
+  /* Main Menu */
+  #gameTitle {
+    color: rgb(250, 225, 0);
+    margin: 10vh 0;
+    margin-bottom: 30vh;
+    font-size: 13vh;
+    letter-spacing: -0.5vh;
+  }
+  #footer {
+    position: absolute;
+    margin: 0 auto;
+    bottom: 0;
+    text-align: center;
+    font-size: 1vh;
+    color: rgb(128, 128, 128);
+    width: 100%;
+    left: 0;
+    margin-bottom: 3vh;
+  }
+  #gameVersion {
+    margin-bottom: 1vh;
+  }
+  /* Game */
+  #gameNav {
+    display: inline-block;
+    width: 90%;
+    margin: 0 5% 0;
+  }
+  #gameLevel {
+    display: inline-block;
+    font-size: 6vh;
+    font-weight: bold;
+    letter-spacing: -0.1vh;
+    color: rgb(250, 225, 0);
+    margin: 0 15% 0 0;
+    left: 0;
+  }
+  #backToMenuButton, #undoButton, #resetStageButton {
+    display: inline-block;
+    width: 15vh;
+    height: 9vh;
+    font-size: 3vh;
+    border-radius: 2vh;
+    background: rgb(250, 225, 0);
+  }
+  #backToMenuButton {
+    margin: 0 0 0 15%;
+    margin-bottom: 0;
+  }
+  #undoButton {
+    margin: 0 15% 0 0;
+  }
+  #resetStageButton {
+    margin: 0 0 0 15%;
+  }
+  #canvasWrapper {
+    text-align: center;
+    margin: 3vh auto 0;
+  }
+  /* Stage Select Menu */
+  #stageSelectButtons {
+    margin-top: 20vh;
+  }
+  .fiveStageSelectButtons {
+    display: block;
+  }
+  .fiveStageSelectButtons button {
+    display: inline-block;
+    background: rgb(128, 128, 128);
+    width: 10vh;
+    height: 10vh;
+    margin: 2vh 1vh;
+  }
+  #backToTitleButton {
+    display: block;
+  }
+  /* Next Level */
+  #completeStage, #finishedBox {
+    display: block;
+    width: 70vh;
+    height: 55vh;
+    border: 1vh solid rgb(250, 225, 0);
+    border-radius: 5vh;
+    margin: 20vh auto 0;
+  }
+  #congratsText {
+    margin: 10vh auto 13vh;
+    font-size: 8vh;
+    letter-spacing: -0.3vh;
+    color: rgb(225, 225, 225);
+  }
+  /* Game Finished */
+  #finishedText {
+    margin: 5vh auto 10vh;
+    font-size: 5vh;
+    letter-spacing: -0.1vh;
+    color: rgb(225, 225, 225);
+  }
 }
