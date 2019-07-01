@@ -204,15 +204,16 @@ const gameArea = document.getElementById("gameArea");
 const startButton = document.getElementById("startButton");
 const stageSelectButton = document.getElementById("stageSelectButton");
 const stageSelect = document.getElementById("stageSelect");
+const goToStageButton = document.getElementsByClassName("goToStageButton");
+const backToTitleButton = document.getElementById("backToTitleButton");
+const resetDataButton = document.getElementById("resetDataButton");
 const backToMenuButton = document.getElementById("backToMenuButton");
 const undoButton = document.getElementById("undoButton");
 const resetStageButton = document.getElementById("resetStageButton");
-const backToTitleButton = document.getElementById("backToTitleButton");
 const nextLevelButton = document.getElementById("nextLevelButton");
 const nextLevel = document.getElementById("nextLevel");
 const htmlLevel = document.getElementById("gameLevel");
 const htmlGameVersion = document.getElementById("gameVersion");
-const goToStageButton = document.getElementsByClassName("goToStageButton");
 const gameFinished = document.getElementById("gameFinished");
 const gameFinishedButton = document.getElementById("gameFinishedButton");
 const gameVersion = "rkana"
@@ -252,6 +253,7 @@ if (document) {
   }
   fadeIn(mainMenu, fadeInTime);
   startButton.addEventListener("click", function () {
+    gameLevel = highestLevel;
     startGame();
   });
   document.addEventListener("keydown", keyboardInput, false);
@@ -282,6 +284,16 @@ if (document) {
     fadeOut(stageSelect, fadeOutTime);
     fadeIn(mainMenu, fadeInTime);
   });
+  resetDataButton.addEventListener("click", function () {
+    if (playing === false) {
+      resetLevel(0);
+      for (let i = 1; i <= highestLevel; i++) {
+        resetLevel(i);
+        goToStageButton.item(i).style.background = "rgb(128, 128, 128)";
+      }
+      gameLevel = highestLevel = 0;
+    }
+  })
   nextLevelButton.addEventListener("click", function () {
     if (playing === false) {
       fadeOut(nextLevel, fadeOutTime);

@@ -115,9 +115,9 @@ body {
     height: 10vw;
     margin: 2% 1%;
   }
-  #backToTitleButton {
-    display: block;
-  }
+  /* #backToTitleButton, #resetDataButton {
+    display: inline-block;
+  } */
   /* Next Level */
   #completeStage, #finishedBox {
     display: block;
@@ -234,20 +234,22 @@ body {
   /* Stage Select Menu */
   #stageSelectButtons {
     margin-top: 20vh;
+    margin-bottom: 10vh;
   }
   .fiveStageSelectButtons {
     display: block;
+    font-size: 7vh;
   }
   .fiveStageSelectButtons button {
     display: inline-block;
     background: rgb(128, 128, 128);
-    width: 10vh;
-    height: 10vh;
-    margin: 2vh 1vh;
+    width: 7vh;
+    height: 7vh;
+    margin: 1vh 1vh;
   }
-  #backToTitleButton {
-    display: block;
-  }
+  /* #backToTitleButton, #resetDataButton {
+    display: inline-block;
+  } */
   /* Next Level */
   #completeStage, #finishedBox {
     display: block;
