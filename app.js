@@ -38,9 +38,38 @@ const drawGame = function () {
   }
 }
 const keyboardInput = function (key) {
-  if (playing === false) return;
-  if (key.keyCode < 37 || key.keyCode > 40) return;
-  canMove(wallsData[gameLevel], ballsData[gameLevel], playerData[gameLevel], key.keyCode);
+  if (36 < key.keyCode && key.keyCode < 41) { // arrow keys
+    if (playing === false) return;
+    canMove(wallsData[gameLevel], ballsData[gameLevel], playerData[gameLevel], key.keyCode);
+  }
+  else if (key.keyCode === 90) { // z
+    if (playing === false) return;
+    undoMove();
+  }
+  else if (key.keyCode === 82) { // r
+    if (playing === false) return;
+    resetLevel();
+  }
+  else if (key.keyCode == 32) { // space
+    if (nextLevel.style.opacity === "1") {
+      if (playing === true) return;
+      nextLevelButton.click();
+    }
+    else if (gameFinished.style.opacity === "1") {
+      if (playing === false) return;
+      gameFinishedButton.click();
+    }
+  }
+  else if (key.keyCode === 27) { // esc
+    if (gameArea.style.opacity === "1") {
+      if (playing === false) return;
+      backToMenuButton.click();
+    }
+    else if (stageSelect.style.opacity === "1") {
+      if (playing === true) return;
+      backToTitleButton.click();
+    }
+  }
 }
 const canMove = function (wallArray, ballArray, playerArray, key) {
   const [x, y] = (function () {
@@ -131,7 +160,7 @@ const levelUp = function () {
     fadeIn(gameFinished, fadeInTime, "block");
   }
   else {
-    goToStageButton.item(gameLevel + 1).style.background = "rgb(255, 225, 50)";
+    goToStageButton.item(gameLevel + 1).style.background = goToStageButton.item(0).style.background;
     fadeOut(gameArea, fadeOutTime);
     fadeIn(nextLevel, fadeInTime, "block");
   }
@@ -140,7 +169,7 @@ const levelUp = function () {
 
 const fadeIn = function (object, ms, displayStyle) {
   if (!object) return;
-  // if (object.style.display !== "none") return;
+  // if (!object || object.style.display !== "none") return;
   if (arguments.length === 2) displayStyle = "inline-block";
   object.style.opacity = 0;
   object.style.filter = "alpha(opacity=0)";
@@ -218,7 +247,7 @@ const gameFinished = document.getElementById("gameFinished");
 const gameFinishedButton = document.getElementById("gameFinishedButton");
 const gameVersion = "rkana"
 const fadeOutTime = 200;
-const fadeInTime = 600;
+const fadeInTime = 300;
 const wallImage = new Image;
 const ballImage = new Image;
 const goalImage = new Image;
